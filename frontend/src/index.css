@@ -2,65 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 222 47% 11%;
-  --foreground: 213 31% 91%;
-  --card: 222 47% 13%;
-  --card-foreground: 213 31% 91%;
-  --popover: 222 47% 11%;
-  --popover-foreground: 213 31% 91%;
-  --primary: 239 84% 67%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 222 47% 18%;
-  --secondary-foreground: 213 31% 91%;
-  --muted: 222 47% 18%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 222 47% 20%;
-  --accent-foreground: 213 31% 91%;
-  --destructive: 0 63% 55%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 222 47% 20%;
-  --input: 222 47% 18%;
-  --ring: 239 84% 67%;
-  --radius: 0.5rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  direction: rtl;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { direction: rtl; }
 body {
-  @apply bg-slate-900 text-slate-100;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: #EEF2F8;
+  color: #1A2332;
+  font-family: 'Rubik', 'Segoe UI', system-ui, sans-serif;
   min-height: 100vh;
 }
-
-#root {
-  min-height: 100vh;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-slate-800;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-slate-600 rounded-full;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-500;
-}
-
-/* RTL utilities */
-.rtl-flip {
-  transform: scaleX(-1);
-}
+#root { min-height: 100vh; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #EEF2F8; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
