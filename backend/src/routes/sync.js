@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { supabase } from '../services/supabase.js';
+import { getSupabase } from '../services/supabase.js';
 import { decrypt } from '../services/encryption.js';
 import { scrapeAccount } from '../services/scraper.js';
 import { checkAlerts } from '../services/alertChecker.js';
@@ -57,7 +57,7 @@ async function syncSingleAccount(account, userId) {
         .limit(1);
 
       if (!existing || existing.length === 0) {
-        await supabase.from('personal_transactions').insert(tx);
+        await getSupabase().from('personal_transactions').insert(tx);
         syncedCount++;
       }
     }

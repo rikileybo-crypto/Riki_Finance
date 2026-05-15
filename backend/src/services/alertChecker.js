@@ -1,11 +1,11 @@
-import { supabase } from './supabase.js';
+import { getSupabase } from './supabase.js';
 
 const LARGE_TRANSACTION_THRESHOLD = 1000;
 
 export async function checkAlerts(userId, transactions, budgetCategories) {
+  const supabase = getSupabase();
   const alerts = [];
 
-  // Check for large single transactions
   for (const tx of transactions) {
     if (tx.type === 'expense' && Math.abs(tx.amount) >= LARGE_TRANSACTION_THRESHOLD) {
       alerts.push({
@@ -18,7 +18,6 @@ export async function checkAlerts(userId, transactions, budgetCategories) {
     }
   }
 
-  // Check budget exceeded per category
   if (budgetCategories && budgetCategories.length > 0) {
     const now = new Date();
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { supabase } from '../services/supabase.js';
+import { getSupabase } from '../services/supabase.js';
 
 const router = Router();
 
