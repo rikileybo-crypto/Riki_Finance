@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/supabase.js';
+import { getSupabase } from '../services/getSupabase().js';
 import { encrypt } from '../services/encryption.js';
 
 const router = Router();
@@ -59,3 +59,4 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 }));
 
 export default router;
+

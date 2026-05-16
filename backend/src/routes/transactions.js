@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/supabase.js';
+import { getSupabase } from '../services/getSupabase().js';
 
 const router = Router();
 
@@ -57,3 +57,4 @@ router.patch('/:id', asyncHandler(async (req, res) => {
 }));
 
 export default router;
+
