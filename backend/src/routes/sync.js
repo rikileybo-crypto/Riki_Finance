@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase().js';
+import { getSupabase } from '../services/getSupabase.js';
 import { decrypt } from '../services/encryption.js';
 import { scrapeAccount } from '../services/scraper.js';
 import { checkAlerts } from '../services/alertChecker.js';
