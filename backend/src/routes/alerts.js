@@ -3,9 +3,9 @@ import asyncHandler from 'express-async-handler';
 import { getSupabase } from '../services/supabase.js';
 
 const router = Router()
-const supabase = getSupabase();
 // GET /events
 router.get('/events', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from('personal_alert_events')
     .select('*')
@@ -19,6 +19,7 @@ router.get('/events', asyncHandler(async (req, res) => {
 
 // PATCH /events/:id/read
 router.patch('/events/:id/read', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { error } = await supabase
     .from('personal_alert_events')
     .update({ is_read: true })
@@ -31,6 +32,7 @@ router.patch('/events/:id/read', asyncHandler(async (req, res) => {
 
 // PATCH /events/read-all
 router.patch('/events/read-all', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { error } = await supabase
     .from('personal_alert_events')
     .update({ is_read: true })
