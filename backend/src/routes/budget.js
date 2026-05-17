@@ -4,6 +4,7 @@ import { getSupabase } from '../services/supabase.js';
 
 const router = Router();
 
+const supabase = getSupabase();
 // GET /categories
 router.get('/categories', asyncHandler(async (req, res) => {
   const { data, error } = await supabase
