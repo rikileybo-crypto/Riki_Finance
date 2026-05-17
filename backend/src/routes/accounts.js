@@ -1,11 +1,12 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase().js';
+import { getSupabase } from '../services/supabase.js';
 import { encrypt } from '../services/encryption.js';
 
 const router = Router();
+const supabase = getSupabase();
 
-// GET / — list accounts (without credentials)
+// GET / ג€” list accounts (without credentials)
 router.get('/', asyncHandler(async (req, res) => {
   const { data, error } = await supabase
     .from('personal_accounts')
@@ -17,7 +18,7 @@ router.get('/', asyncHandler(async (req, res) => {
   res.json(data);
 }));
 
-// POST / — add account
+// POST / ג€” add account
 router.post('/', asyncHandler(async (req, res) => {
   const { name, type, account_number, color, credentials } = req.body;
 
@@ -46,7 +47,7 @@ router.post('/', asyncHandler(async (req, res) => {
   res.status(201).json(data);
 }));
 
-// DELETE /:id — delete account
+// DELETE /:id ג€” delete account
 router.delete('/:id', asyncHandler(async (req, res) => {
   const { error } = await supabase
     .from('personal_accounts')

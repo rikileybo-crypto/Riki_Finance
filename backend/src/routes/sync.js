@@ -1,11 +1,12 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase().js';
+import { getSupabase } from '../services/supabase.js';
 import { decrypt } from '../services/encryption.js';
 import { scrapeAccount } from '../services/scraper.js';
 import { checkAlerts } from '../services/alertChecker.js';
 
 const router = Router();
+const supabase = getSupabase();
 
 async function syncSingleAccount(account, userId) {
   // Mark as syncing
@@ -57,7 +58,7 @@ async function syncSingleAccount(account, userId) {
         .limit(1);
 
       if (!existing || existing.length === 0) {
-        await getSupabase().from('personal_transactions').insert(tx);
+        await supabase.from('personal_transactions').insert(tx);
         syncedCount++;
       }
     }
@@ -88,7 +89,7 @@ async function syncSingleAccount(account, userId) {
   }
 }
 
-// POST / — sync accounts
+// POST / ג€” sync accounts
 router.post('/', asyncHandler(async (req, res) => {
   const { accountId } = req.body;
 
@@ -116,7 +117,7 @@ router.post('/', asyncHandler(async (req, res) => {
   res.json({ synced: totalSynced, accounts: results });
 }));
 
-// GET /status — last sync status per account
+// GET /status ג€” last sync status per account
 router.get('/status', asyncHandler(async (req, res) => {
   const { data, error } = await supabase
     .from('personal_accounts')

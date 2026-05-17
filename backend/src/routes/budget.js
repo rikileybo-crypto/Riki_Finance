@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase().js';
+import { getSupabase } from '../services/supabase.js';
 
 const router = Router();
+const supabase = getSupabase();
 
 // GET /categories
 router.get('/categories', asyncHandler(async (req, res) => {
