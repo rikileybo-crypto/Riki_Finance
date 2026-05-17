@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase().js';
+import { getSupabase } from '../services/getSupabase.js';
 import { encrypt } from '../services/encryption.js';
 
 const router = Router();
@@ -13,7 +13,7 @@ router.get('/', asyncHandler(async (req, res) => {
     .eq('user_id', req.user.id)
     .order('created_at', { ascending: true });
 
-  if (error) return res.status(500).json({ error: error.message });
+  if (error) return res.status(500).json({ error: error.message });h
   res.json(data);
 }));
 
