@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler';
 import { getSupabase } from '../services/supabase.js';
 
 const router = Router()
+const supabase = getSupabase();
 // GET /events
 router.get('/events', asyncHandler(async (req, res) => {
   const { data, error } = await supabase
