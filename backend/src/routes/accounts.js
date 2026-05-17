@@ -1,9 +1,8 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getSupabase } from '../services/getSupabase.js';
+import { getSupabase } from '../services/supabase.js';
 import { encrypt } from '../services/encryption.js';
 
-import { getSupabase } from '../services/supabase.js';
 
 // GET / — list accounts (without credentials)
 router.get('/', asyncHandler(async (req, res) => {
