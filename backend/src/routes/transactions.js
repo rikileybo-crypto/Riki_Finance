@@ -3,9 +3,8 @@ import asyncHandler from 'express-async-handler';
 import { getSupabase } from '../services/supabase.js';
 
 const router = Router();
-const supabase = getSupabase();
-
 // GET / — paginated transactions with filters
+const supabase = getSupabase();
 router.get('/', asyncHandler(async (req, res) => {
   const {
     accountId,

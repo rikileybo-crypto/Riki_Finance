@@ -1,13 +1,11 @@
-﻿import { Router } from 'express';
+import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 import { getSupabase } from '../services/supabase.js';
 import { encrypt } from '../services/encryption.js';
-
 const router = Router();
-const supabase = getSupabase();
-
-// GET / ג€” list accounts (without credentials)
+// GET / — list accounts (without credentials)
 router.get('/', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from('personal_accounts')
     .select('id, name, type, account_number, color, last_sync_at, last_sync_status, is_active, created_at')
@@ -18,8 +16,9 @@ router.get('/', asyncHandler(async (req, res) => {
   res.json(data);
 }));
 
-// POST / ג€” add account
+// POST / — add account
 router.post('/', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { name, type, account_number, color, credentials } = req.body;
 
   if (!name || !type || !credentials) {
@@ -47,8 +46,9 @@ router.post('/', asyncHandler(async (req, res) => {
   res.status(201).json(data);
 }));
 
-// DELETE /:id ג€” delete account
+// DELETE /:id — delete account
 router.delete('/:id', asyncHandler(async (req, res) => {
+  const supabase = getSupabase();
   const { error } = await supabase
     .from('personal_accounts')
     .delete()

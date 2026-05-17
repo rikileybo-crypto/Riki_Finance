@@ -8,6 +8,7 @@ import { checkAlerts } from '../services/alertChecker.js';
 const router = Router();
 const supabase = getSupabase();
 
+const supabase = getSupabase();
 async function syncSingleAccount(account, userId) {
   // Mark as syncing
   await supabase
