@@ -1,8 +1,8 @@
 import { createScraper, CompanyTypes } from 'israeli-bank-scrapers';
 
 const COMPANY_MAP = {
-  leumi: CompanyTypes.Leumi,
-  max: CompanyTypes.Max,
+  leumi: CompanyTypes.leumi,
+  max: CompanyTypes.max,
 };
 
 export async function scrapeAccount(accountType, credentials, startDate) {
@@ -13,7 +13,10 @@ export async function scrapeAccount(accountType, credentials, startDate) {
     companyId,
     startDate: startDate || new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
     showBrowser: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    verbose: false,
+    timeout: 120000,
+    navigationRetryCount: 3,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
   });
 
   const result = await scraper.scrape(credentials);

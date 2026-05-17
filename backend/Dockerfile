@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright/node:20-focal
+FROM mcr.microsoft.com/playwright/node:22-focal
 WORKDIR /app
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 COPY package*.json ./
