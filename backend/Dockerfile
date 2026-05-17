@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM mcr.microsoft.com/playwright/node:20-focal
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
