@@ -4,6 +4,7 @@ import { getSupabase } from '../services/supabase.js';
 
 const router = Router();
 // GET / — paginated transactions with filters
+const supabase = getSupabase();
 router.get('/', asyncHandler(async (req, res) => {
   const {
     accountId,
