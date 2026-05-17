@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler';
 import { getSupabase } from '../services/supabase.js';
 import { encrypt } from '../services/encryption.js';
 const router = Router();
-
+const supabase = getSupabase();
 // GET / — list accounts (without credentials)
 router.get('/', asyncHandler(async (req, res) => {
   const { data, error } = await supabase
